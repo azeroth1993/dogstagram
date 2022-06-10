@@ -3,7 +3,7 @@
 This is an instagram like application for Dog lovers. You can watch pictures of many different dogs, 
 filter based on breed and save them as your favourite. 
 
-Checkout the live app: https://sovryn-5es.pages.dev/
+Checkout the live app: https://dogstagram.pages.dev/
 
 
 ## Local installation instructions
