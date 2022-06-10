@@ -39,7 +39,7 @@ Checkout the live app: https://sovryn-5es.pages.dev/
 
 ## Screenshots
 
-![Crypto Transfer App](/public/welcome-screen.jpg)
-![Crypto Transfer App](/public/transfer-form.jpg)
-![Crypto Transfer App](/public/confirmation-screen.jpg)
-![Crypto Transfer App](/public/transfer-status.jpg)
+![Dogstagram](/public/s1.jpg)
+![Dogstagram](/public/s2.jpg)
+![Dogstagram](/public/s3.jpg)
+![Dogstagram](/public/s4.jpg)
