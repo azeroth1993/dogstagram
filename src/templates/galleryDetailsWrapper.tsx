@@ -15,13 +15,18 @@ const GalleryDetailsWrapper: React.FunctionComponent<GalleryDetailsWrapper> = ({
   const [currentDog, setCurrentDog] = useState(index);
   const [detailsOpen, setDetailsOpen] = useState(open);
 
+  console.log(items.length, currentDog);
+
   useEffect(() => {
     setCurrentDog(index);
     setDetailsOpen(true);
   }, [open])
 
   useLayoutEffect(() => {
-    items.length >= 0 && setCurrentDog(currentDog =>  currentDog -1)  ;
+    if (items.length >= 1 && currentDog !== -1) {
+      setCurrentDog(currentDog => currentDog - 1);
+      onClose && onClose();
+    } 
   }, [items.length])
 
   const closeDetails = () => {
