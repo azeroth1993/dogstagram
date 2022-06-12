@@ -5,11 +5,12 @@ import GalleryDetailsWrapper from './galleryDetailsWrapper';
 
 interface Favourites {
   favs: string[],
+  className?: string,
   items: DogBreed[],
   onClick?: () => void
 }
 
-const Favourites: React.FunctionComponent<Favourites> = ({ favs, items, onClick }) => {
+const Favourites: React.FunctionComponent<Favourites> = ({ favs, items, className, onClick }) => {
 
   const [favDogs, setFavDogs] = useState<DogBreed[]>([]);
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -30,7 +31,7 @@ const Favourites: React.FunctionComponent<Favourites> = ({ favs, items, onClick 
   }, [favs, items]);
 
   return (
-    <div>
+    <div className={` ${className}`}>
       <ul className="grid gap-3 grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-8">
         {favDogs.length > 0 ?
           favDogs.map((x, i) => (

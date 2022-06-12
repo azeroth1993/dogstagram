@@ -16,8 +16,8 @@ const initialState: GlobalState = {
 
 export const fetchDogs = createAsyncThunk(
   'dogs/fetchByBreed',
-  async (count: number, thunkAPI) => {
-    const res = await fetch(`https://api.TheDogAPI.com/v1/breeds?limit=${count}&page=6&order=Desc`)
+  async (settings:{count:number, page:number}, thunkAPI) => {
+    const res = await fetch(`https://api.TheDogAPI.com/v1/breeds?limit=${settings.count}&page=${settings.page}&order=Desc`)
     return (await res.json()) as DogBreed[]
   }
 )
@@ -36,9 +36,7 @@ export const globalSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(fetchDogs.fulfilled, (state, action) => {
-      // Add user to the state array
       state.allDogs = [...action.payload];
     })
   },

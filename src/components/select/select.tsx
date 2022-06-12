@@ -27,7 +27,6 @@ const Select: React.FunctionComponent<Select> = ({ options, className, id, label
         className={` ${className}`}
         onChange={handleChange}
       >
-        {/* {options.indexOf(defaultValue) === -1 && <option value={defaultValue}>{defaultValue}</option>} */}
         {options.map((x, i) => (
           <option key={x + i} value={x}>{x}</option>
         ))}

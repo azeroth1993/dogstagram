@@ -4,13 +4,16 @@ import { DogBreed } from '../types/general'
 import Select from '../components/select/select';
 import GalleryDetailsWrapper from './galleryDetailsWrapper';
 import { Gear } from '../components/icons';
+import Pagination from '../components/pagination/pagination';
 
 interface Gallery {
   items: DogBreed[],
-  onFilter: (count: string) => void
+  className?: string,
+  onFilter: (count: string) => void,
+  onPagination: (page: number) => void,
 }
 
-const Gallery: React.FunctionComponent<Gallery> = ({ items, onFilter }) => {
+const Gallery: React.FunctionComponent<Gallery> = ({ items, className, onFilter, onPagination }) => {
 
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [currentDog, setCurrentDog] = useState(-1);
@@ -38,6 +41,9 @@ const Gallery: React.FunctionComponent<Gallery> = ({ items, onFilter }) => {
   const toggleFilters = () => {
     setFiltersOpen(!filtersOpen);
   }
+  const handlePagination = (page: number) => {
+    onPagination && onPagination(page);
+  }
 
   useMemo(() => {
     let currentList = items.filter(x => breed === 'All' ? x : x.name === breed);
@@ -45,12 +51,21 @@ const Gallery: React.FunctionComponent<Gallery> = ({ items, onFilter }) => {
   }, [items, breed]);
 
   return (
-    <div className="relative flex flex-col w-full">       
+    <div className={`relative flex-col w-full ${className}`}>       
       <ul className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 lg:order-2">
         {liveList.map((x, i) => (
           <GalleryItem key={x.name + i} item={x} index={i} onClick={showDetails}/>
         ))}
       </ul>
+      <Pagination 
+        total={172} 
+        perPage={Number(itemsPerPage)} 
+        onChange={handlePagination} 
+        wrapperClass="order-2" 
+        ButtonClass=""
+        bgColor="white"
+        textColor="primary"
+      />
       <Gear className={`inline-block w-14 h-14 fixed ${filtersOpen ? 'bottom-40' : 'bottom-16'} right-0 bg-white fill-primary p-2 rounded shadow lg:cursor-pointer active:scale-95 transition-transform will-change-transform lg:hidden`} onClick={toggleFilters} />
       <div className={`${filtersOpen ? 'translate-y-0' : 'translate-y-full'} 
       transition-all shadow-md flex flex-col items-start bg-white w-screen -ml-3 py-3 border-b border-dashed border-lavender mx-auto mt-6 fixed bottom-10 will-change-transform z-10 sm:pt-2 sm:pb-2 px-4 rounded-t 

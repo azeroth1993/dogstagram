@@ -30,7 +30,7 @@ const Button: React.FunctionComponent<Button> = ({ text, type = "button", color 
       value={value}
       style={{ '--color': color, '--text-color': textColor } as React.CSSProperties}
       className={`
-      block min-h-6 select-none origin-center active:scale-[0.97] transition-transform duration-[75ms] py-2 px-3 shadow focus:outline-none 
+      block min-h-6 select-none origin-center active:scale-[0.97] transition-transform duration-[75ms] will-change-transform py-2 px-3 shadow focus:outline-none 
       border-2 [color:var(--text-color)] [border-color:var(--color)]
       ${disabled ? 'lg:cursor-not-allowed bg-gray-400 border-gray-400' : 'lg:cursor-pointer'} ${className}
       `}

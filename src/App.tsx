@@ -11,18 +11,21 @@ const App = () => {
 
   const [activeTab, setActiveTab] = useState(1);
   const [itemsCount, setItemsCount] = useState(15);
+  const [page, setPage] = useState(0);
   const dispatch = useAppDispatch();
   const allBreeds = useGetAllBreeds();
   const favourites = useGetFavourites();
   
   const handleFilters = (count: string) => {
     setItemsCount(Number(count));
-    console.log(itemsCount);
+  }
+  const handlePagination = (page: number) => {
+    setPage(page);
   }
 
   useEffect(() => {
-    dispatch(fetchDogs(itemsCount));
-  }, [itemsCount])
+    dispatch(fetchDogs({count:itemsCount, page:page}));
+  }, [itemsCount, page])
 
   return (
     <main className="relative flex justify-center select-none">
@@ -32,11 +35,8 @@ const App = () => {
           <span className="w-64 sm:w-auto px-2 sm:px-10">welcome to Dogstagram!</span>
           <DogPaw className="w-12 h-12 sm:w-16 sm:h-16 fill-primary rotate-12" />
         </h1>
-        {activeTab === 1 ?
-          <Gallery items={allBreeds} onFilter={handleFilters} />
-          :
-          <Favourites favs={favourites} items={allBreeds} />
-        }
+        <Gallery items={allBreeds} onFilter={handleFilters} onPagination={handlePagination} className={`${activeTab === 1 ? 'flex' : 'hidden'}`} />
+        <Favourites favs={favourites} items={allBreeds} className={`${activeTab === 2 ? 'block' : 'hidden'}`} />
       </div>
       <div className="grid grid-cols-2 gap-0 w-full mt-6 fixed bottom-0 will-change-transform z-10">
         <Button 
