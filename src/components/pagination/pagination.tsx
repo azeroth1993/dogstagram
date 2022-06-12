@@ -28,29 +28,27 @@ const Pagination: React.FunctionComponent<Pagination> = ({ total, perPage, Butto
     console.log(page - 1);
   }
   const handleNextPrev = (amount: number) => {
-    if (activePage > 1 && activePage < items.length) {
-      setActivePage(activePage + amount);
-      onChange && onChange(activePage + amount - 1);
-    } 
+    setActivePage(activePage + amount);
+    onChange && onChange(activePage + amount - 1);
   }
 
   return (
-    <ul className={`flex justify-center items-center w-full mt-10 mb-4 rounded divide-x divide-lavender ${wrapperClass}`}>
-      <li className={`inline-block lg:cursor-pointer bg-${bgColor} text-primary hover:bg-${textColor} hover:text-white active:scale-95 transition-transform will-change-transform rounded-l`}>
-        <ArrowLeft className={`fill-current inline-block w-10 h-10 p-2`} onClick={() => handleNextPrev(-1)} />
+    <ul className={`flex justify-center items-center w-full mt-10 mb-4 ${wrapperClass}`}>
+      <li className={`inline-block lg:cursor-pointer mx-[2px] bg-${bgColor} text-primary hover:bg-${textColor} hover:text-white active:scale-95 transition-transform will-change-transform rounded`}>
+        <ArrowLeft className={`fill-current inline-block w-10 h-10 p-2`} onClick={() => activePage > 1 && handleNextPrev(-1)} />
       </li>
       {items.map(x => (
         <li 
           key={x} 
-          className={`w-10 h-10 text-base font-semibold justify-center items-center shadow-sm lg:cursor-pointer active:scale-95 transition-transform will-change-transform hover:bg-primary hover:text-white
+          className={`w-10 h-10 text-base font-semibold mx-[2px] justify-center items-center shadow-sm rounded lg:cursor-pointer active:scale-95 transition-transform will-change-transform hover:bg-primary hover:text-white
           ${(Math.abs(activePage - x) < 2) || items.length === x || x === 1 ? 'flex' : 'hidden'} ${activePage === x ? `bg-${textColor} text-white` : `bg-${bgColor} text-primary`} ${ButtonClass}`}
           onClick={() => handleChange(x)} 
         >
           {x}
         </li>
       ))}
-      <li className={`inline-block lg:cursor-pointer bg-${bgColor} text-primary hover:bg-${textColor} hover:text-white active:scale-95 transition-transform will-change-transform rounded-r`}>
-        <ArrowRight className={`fill-current inline-block w-10 h-10 p-2`} onClick={() => handleNextPrev(1)} />
+      <li className={`inline-block lg:cursor-pointer mx-[2px] bg-${bgColor} text-primary hover:bg-${textColor} hover:text-white active:scale-95 transition-transform will-change-transform rounded`}>
+        <ArrowRight className={`fill-current inline-block w-10 h-10 p-2`} onClick={() => activePage < items.length && handleNextPrev(1)} />
       </li>
     </ul>
   )
