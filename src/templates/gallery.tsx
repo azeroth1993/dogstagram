@@ -63,8 +63,8 @@ const Gallery: React.FunctionComponent<Gallery> = ({ items, className, onFilter,
         onChange={handlePagination} 
         wrapperClass="order-2" 
         ButtonClass=""
-        bgColor="white"
-        textColor="primary"
+        bgColor="#fff"
+        textColor="#6366f1"
       />
       <Gear className={`inline-block w-14 h-14 fixed ${filtersOpen ? 'bottom-40' : 'bottom-16'} right-0 bg-white fill-primary p-2 rounded shadow lg:cursor-pointer active:scale-95 transition-transform will-change-transform lg:hidden`} onClick={toggleFilters} />
       <div className={`${filtersOpen ? 'translate-y-0' : 'translate-y-full'} 

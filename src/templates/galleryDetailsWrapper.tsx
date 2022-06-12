@@ -20,7 +20,7 @@ const GalleryDetailsWrapper: React.FunctionComponent<GalleryDetailsWrapper> = ({
   useEffect(() => {
     setCurrentDog(index);
     setDetailsOpen(true);
-  }, [open])
+  }, [open, index])
 
   useLayoutEffect(() => {
     if (items.length >= 1 && currentDog !== -1) {
