@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FilledHeart } from '../components/icons';
 import { DogBreed } from '../types/general'
 import GalleryDetailsWrapper from './galleryDetailsWrapper';
@@ -25,7 +25,7 @@ const Favourites: React.FunctionComponent<Favourites> = ({ favs, items, classNam
     setDetailsOpen(false);
   }
 
-  useMemo(() => {
+  useEffect(() => {
     const currentFavs = items.filter(x => favs.includes(x.image.id));
     setFavDogs([...currentFavs]);
   }, [favs, items]);

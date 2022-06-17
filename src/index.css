@@ -2,35 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-family: IRANSans;
-  src: local('IRANSans'), url(/fonts/IRANSansWeb.woff2) format("woff2"), 
-  url(/fonts/IRANSansWeb.woff) format("woff"),
-  url(/fonts/IRANSansWeb.ttf) format("truetype"),
-	url(/fonts/IRANSansWeb.eot),
-  url(/fonts/IRANSansWeb.eot?#iefix) format("embedded-opentype");
-  unicode-range: 0020-007F, 00A0-00BB, 0600-067F;
-	font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: IRANSans;
-  src: local('IRANSans'), url(/fonts/IRANSansWeb_Medium.woff2) format("woff2"), 
-  url(/fonts/IRANSansWeb_Medium.woff) format("woff"),
-  url(/fonts/IRANSansWeb_Medium.ttf) format("truetype"),
-	url(/fonts/IRANSansWeb_Medium.eot),
-  url(/fonts/IRANSansWeb_Medium.eot?#iefix) format("embedded-opentype");
-  unicode-range: 0020-007F, 00A0-00BB, 0600-067F;
-	font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-} */
-
 @layer base {
-  html {
-    /* @apply font-main; */
-  }
   body { 
     @apply bg-lavender; 
   }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { getFavs, getAllDogs } from '../redux/slices/global';
 

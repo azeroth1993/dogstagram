@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FilledHeart, EmptyHeart, SharePaperPlane, ArrowLeft, ArrowRight } from '../components/icons'
-import { useAppSelector, useAppDispatch } from '../redux/hooks';
+import { useAppDispatch } from '../redux/hooks';
 import { addFav, removeFav } from '../redux/slices/global';
 import { useGetFavourites } from '../hooks/general'
 import { DogBreed } from '../types/general';
@@ -24,7 +24,7 @@ const GalleryDetails: React.FunctionComponent<GalleryDetails> = ({ item, onSlide
     !fav ? dispatch(addFav(item.image.id)) : dispatch(removeFav(item.image.id));
   }
 
-  useMemo(() => {
+  useEffect(() => {
     const isFav = favourites.includes(item.image.id);
     setFav(isFav);
   }, [favourites, item.image.id])
@@ -45,7 +45,7 @@ const GalleryDetails: React.FunctionComponent<GalleryDetails> = ({ item, onSlide
         <img
           src={item.image.url}
           alt={item.name}
-          className="block w-full object-contain select-none"
+          className="block w-full object-contain select-none max-h-full"
           width={item.image.width}
           height={item.image.height}
         />

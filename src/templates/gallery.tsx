@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import GalleryItem from './galleryItem'
 import { DogBreed } from '../types/general'
 import Select from '../components/select/select';
@@ -45,7 +45,7 @@ const Gallery: React.FunctionComponent<Gallery> = ({ items, className, onFilter,
     onPagination && onPagination(page);
   }
 
-  useMemo(() => {
+  useEffect(() => {
     let currentList = items.filter(x => breed === 'All' ? x : x.name === breed);
     setLiveList(currentList);
   }, [items, breed]);

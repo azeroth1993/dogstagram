@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DogPaw, EmptyHeart, FilledHeart, ImageOutlined, ImageSolid } from './components/icons';
 import Gallery from './templates/gallery';
 import Favourites from './templates/favourites';
 import Button from './components/button/button';
-import { useAppSelector, useAppDispatch } from './redux/hooks';
+import { useAppDispatch } from './redux/hooks';
 import { useGetFavourites, useGetAllBreeds } from './hooks/general'
 import { fetchDogs } from './redux/slices/global'
 
